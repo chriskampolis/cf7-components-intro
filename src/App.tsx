@@ -8,13 +8,16 @@ import Layout from "./components/Layout.tsx";
 // import Counter from "./components/Counter.tsx";
 // import NameChanger from "./components/NameChanger.tsx";
 // import {useEffect} from "react";
-import OnlineStatus from "./components/OnlineStatus.tsx";
+// import OnlineStatus from "./components/OnlineStatus.tsx";
 // import CounterWithMoreStates from "./components/CounterWithMoreStates.tsx";
 // import CounterAdvanced from "./components/CounterAdvanced.tsx";
 // import CounterWithCustomHook from "./components/CounterWithCustomHook.tsx";
 // import CounterAdvancedWithCustomHook from "./components/CounterAdvancedWithCustomHook.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
 // import Todo from "./components/Todo/Todo.tsx"
+import {BrowserRouter, Routes, Route} from "react-router";
+import HomePage from "./pages/HomePage.tsx";
+import NameChangerPage from "./pages/NameChangerPage.tsx";
 
 function App() {
 
@@ -25,7 +28,7 @@ function App() {
 
   return (
     <>
-      <Layout>
+      {/*<Layout>*/}
       {/*<ClassComponent/>*/}
       {/*<FunctionalComponent/>*/}
       {/*<ArrowFunctionalComponent/>*/}
@@ -47,9 +50,19 @@ function App() {
         {/*<CounterAdvancedWithCustomHook />*/}
         {/*<CounterWithReducer />*/}
         {/*<Todo/>*/}
-        <OnlineStatus/>
+        {/*<OnlineStatus/>*/}
 
-      </Layout>
+      {/*</Layout>*/}
+
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />}/>
+            <Route path="name-changer" element={<NameChangerPage/>}/>
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+
     </>
   )
 }
