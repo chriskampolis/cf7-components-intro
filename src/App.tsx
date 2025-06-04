@@ -18,6 +18,8 @@ import Layout from "./components/Layout.tsx";
 import {BrowserRouter, Routes, Route} from "react-router";
 import HomePage from "./pages/HomePage.tsx";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
+import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
+import UserPage from "./pages/UserPage.tsx";
 
 function App() {
 
@@ -57,8 +59,13 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path="/" element={<HomePage />}/>
-            <Route path="name-changer" element={<NameChangerPage/>}/>
+            {/*<Route path="/" element={<HomePage />}/>*/}
+            <Route index element={<HomePage />}/>
+            <Route path="examples">
+              <Route path ="name-changer" element={<NameChangerPage/>}/>
+              <Route path ="online-status" element={<OnlineStatusPage/>}/>
+            </Route>
+            <Route path="users/:userId" element={<UserPage />}/>
           </Routes>
         </Layout>
       </BrowserRouter>
