@@ -16,7 +16,7 @@
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
 // import Todo from "./components/Todo/Todo.tsx"
 import {BrowserRouter, Routes, Route} from "react-router";
-import HomePage from "./pages/HomePage.tsx";
+// import HomePage from "./pages/HomePage.tsx";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
@@ -25,6 +25,7 @@ import ExamplePage from "./pages/ExamplesPage.tsx";
 import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+import FocusInput from "./components/FocusInput.tsx";
 
 function App() {
 
@@ -66,7 +67,8 @@ function App() {
           <Routes>
             {/*<Route path="/" element={<HomePage />}/>*/}
             <Route element={<RouterLayout />}>
-              <Route index element={<HomePage />}/>
+              {/*<Route index element={<HomePage />}/>*/}
+              <Route index element={<FocusInput />}/>
             </Route>
             {/*<Route path="examples?"/>*/}
             <Route path="examples" element={<RouterExamplesLayout/>}>
