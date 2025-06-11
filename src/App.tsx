@@ -25,7 +25,8 @@ import ExamplePage from "./pages/ExamplesPage.tsx";
 import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
-import FocusInput from "./components/FocusInput.tsx";
+// import FocusInput from "./components/FocusInput.tsx";
+import UncontrolledInput from "./components/UncontrolledInput.tsx";
 
 function App() {
 
@@ -65,10 +66,11 @@ function App() {
       <BrowserRouter>
         {/*<Layout>*/}
           <Routes>
-            {/*<Route path="/" element={<HomePage />}/>*/}
             <Route element={<RouterLayout />}>
+              {/*<Route path="/" element={<HomePage />}/>*/}
               {/*<Route index element={<HomePage />}/>*/}
-              <Route index element={<FocusInput />}/>
+              {/*<Route index element={<FocusInput />}/>*/}
+              <Route index element={<UncontrolledInput />}/>
             </Route>
             {/*<Route path="examples?"/>*/}
             <Route path="examples" element={<RouterExamplesLayout/>}>
