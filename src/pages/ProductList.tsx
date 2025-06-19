@@ -1,23 +1,22 @@
-import {useEffect, useState} from "react";
+import {useState, useEffect} from "react";
 import {
   Table,
   TableBody,
-  TableCaption, TableCell,
-  // TableCell,
+  TableCaption,
+  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import {deleteProduct, getProducts, type Product} from "@/api/products.ts";
+import type {ProductType} from "@/api/products.ts";
+import {getProducts, deleteProduct} from "@/api/products.ts";
 import {Button} from "@/components/ui/button.tsx";
 import {useNavigate} from "react-router";
 import {Pencil, Trash} from "lucide-react";
-import {toast} from 'sonner'
-
+import {toast} from "sonner";
 
 const ProductList = () => {
-
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<ProductType[]>([])
   const [loading, setLoading] = useState<boolean>(true);
   const [deleting, setDeleting] = useState<number | null>(null);
 
@@ -30,23 +29,23 @@ const ProductList = () => {
   }, [])
 
   const handleDelete = async (id: number) => {
-    if (!window.confirm("Are you sure you want to delete this product?")) {
+    if (!window.confirm("Delete this product?")){
       setDeleting(id)
     }
     try {
       await deleteProduct(id);
       setProducts((prev) => prev.filter((p) => p.id !== id));
       toast.success("Product deleted successfully.");
-      console.log("Product deleted successfully.");
+      console.log("Product deleted successfully");
     } catch (error) {
-      toast.error("Error while deleting product " + id);
+      toast.error("Error deleting product " + id);
       console.log(error);
     } finally {
       setDeleting(null);
     }
-  }
+  };
 
-  if (loading) return <div className="text-center p-8">Loading...</div>
+  if (loading) return <div className="text-center p-8">Loading...</div>;
 
   return (
     <>
@@ -66,19 +65,20 @@ const ProductList = () => {
               <TableRow key={product.id}>
                 <TableCell>{product.id}</TableCell>
                 <TableCell>{product.name}</TableCell>
-                <TableCell>{product.price}</TableCell>
+                <TableCell>{product.price} €</TableCell>
                 <TableCell className="text-right space-x-2">
                   <Button
                     variant="outline"
                     onClick={() => navigate(`/products/${product.id}`)}
-                    >
+                  >
                     <Pencil/>
-                  </Button><Button
+                  </Button>
+                  <Button
                     variant="destructive"
                     onClick={() => handleDelete(product.id)}
                     disabled={deleting === product.id}
-                    >
-                    <Trash />
+                  >
+                    <Trash/>
                   </Button>
                 </TableCell>
               </TableRow>
@@ -89,4 +89,4 @@ const ProductList = () => {
     </>
   )
 }
-export default ProductList;
+export default ProductList
